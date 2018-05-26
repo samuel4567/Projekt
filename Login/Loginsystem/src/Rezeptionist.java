@@ -13,6 +13,12 @@ public class Rezeptionist extends User{
 		this.passwd=password;
 		id=anzahlrez;
 		anzahlrez++;
+	}public Rezeptionist(int id,String benutzername, String vorname, String nachname, String password) {
+		this.benutzername=benutzername;
+		this.vorname=vorname;
+		this.nachname=nachname;
+		this.passwd=password;
+		this.id=id;
 	}
 	public String getPasswd() {
 		return passwd;

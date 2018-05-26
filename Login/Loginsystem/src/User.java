@@ -16,14 +16,7 @@ public abstract class User {
 	}
 	//Date von,Date bis,int art,String steuernummer,String vorname,String nachname) {
 		
-	public static Rezeptionist getrezeptionist(String username) {
-		
-		if(true/*if nothing found*/)
-		return null;
-		else {
-			return new Rezeptionist(); 
-		}
-	}
+
 
 	public int sauna_buchen(Date von, Date bis,Gast a) {
 		Zusatzleistungen leistung=new Zusatzleistungen(von,bis,2,a);

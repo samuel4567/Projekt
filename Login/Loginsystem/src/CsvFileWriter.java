@@ -68,7 +68,6 @@ public class CsvFileWriter {
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.gast.getStrAusweisnummer());
 		fileWriter.append(COMMA_DELIMITER);
-		
 		fileWriter.append(zimmer.getVon().toString());
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.getBis().toString());

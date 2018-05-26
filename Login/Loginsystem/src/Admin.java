@@ -62,7 +62,7 @@ public class Admin extends User {
 		benutzername="re"+nachname.substring(0, 3).toLowerCase()+vorname.substring(0, 3).toLowerCase();
 
 		System.out.println(benutzername);
-		Rezeptionist rezeptionist = new Rezeptionist(Rezeptionist.anzahlrez,benutzername,vorname,nachname,password);
+		Rezeptionist rezeptionist = new Rezeptionist(benutzername,vorname,nachname,password);
 		FileWriter fileWriter = null;
 
 		try {
