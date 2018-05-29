@@ -25,7 +25,13 @@ public class CsvFileWriter {
 			fileWriter.append(COMMA_DELIMITER);
 		//	fileWriter.append(admin.getPasswd());
 			fileWriter.append(NEW_LINE_SEPARATOR);
-			fileWriter.close();
+			try {
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (IOException e) {
+				System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+			}
 			System.out.println("CSV file was created successfully !!!");	
 		
 	}
@@ -53,18 +59,20 @@ public class CsvFileWriter {
 		
 		String fileName="zimmer.csv";
 		FileWriter fileWriter = new FileWriter(fileName,true);//True wird verändert damit die datei nicht überschreibt
-		
+		Integer ll=Zusatzleistungen.nummer;
+		fileWriter.append(ll.toString());
 		fileWriter.append(COMMA_DELIMITER);
-		Integer ll=zimmer.gast.getIntGastnummer();
+		fileWriter.append(COMMA_DELIMITER);
+		ll=zimmer.gast.getIntGastnummer();
 		fileWriter.append(ll.toString());
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.gast.getStrVorName());
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.gast.getStrNachName());
 		fileWriter.append(COMMA_DELIMITER);
-		fileWriter.append(zimmer.gast.getStrSteuernummer());
-		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.gast.getStrAdresse());
+		fileWriter.append(COMMA_DELIMITER);
+		fileWriter.append(zimmer.gast.getStrSteuernummer());
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.gast.getStrAusweisnummer());
 		fileWriter.append(COMMA_DELIMITER);
@@ -74,17 +82,17 @@ public class CsvFileWriter {
 		fileWriter.append(COMMA_DELIMITER);
 		fileWriter.append(zimmer.getZimmerart().toString());
 		fileWriter.append(COMMA_DELIMITER);
-		if(zimmer.isVollpension())
-			fileWriter.append("true");
-		else
-			fileWriter.append("false");
+		fileWriter.append(zimmer.isVollpension().toString());
 		fileWriter.append(COMMA_DELIMITER);
-		if(zimmer.isZusatzbett())
-			fileWriter.append("true");
-		else
-			fileWriter.append("false");
+		fileWriter.append(zimmer.isZusatzbett().toString());
 		fileWriter.append(NEW_LINE_SEPARATOR);
-		fileWriter.close();
+		try {
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			System.out.println("Error while flushing/closing fileWriter !!!");
+            e.printStackTrace();
+		}
 		System.out.println("CSV file was created successfully !!!");
 
 	}
@@ -92,26 +100,33 @@ public class CsvFileWriter {
 	private static void csv_Zusatzleistungen(Zusatzleistungen leistung,String fileName) throws IOException {	
 		
 			FileWriter fileWriter = new FileWriter(fileName,true);//True wird verändert damit die datei nicht überschreibt
-			fileWriter.append(COMMA_DELIMITER);
-			Integer ll=leistung.gast.getIntGastnummer();
+			Integer ll=Zusatzleistungen.nummer;
 			fileWriter.append(ll.toString());
 			fileWriter.append(COMMA_DELIMITER);
+			ll=leistung.gast.getIntGastnummer();
+			fileWriter.append(ll.toString());
+			fileWriter.append(COMMA_DELIMITER);//ID;Vorname;Nachname;Adresse;Steuernummer;Ausweis;Von;Bis
 			fileWriter.append(leistung.gast.getStrVorName());
 			fileWriter.append(COMMA_DELIMITER);
 			fileWriter.append(leistung.gast.getStrNachName());
 			fileWriter.append(COMMA_DELIMITER);
-			fileWriter.append(leistung.gast.getStrSteuernummer());
-			fileWriter.append(COMMA_DELIMITER);
 			fileWriter.append(leistung.gast.getStrAdresse());
+			fileWriter.append(COMMA_DELIMITER);
+			fileWriter.append(leistung.gast.getStrSteuernummer());
 			fileWriter.append(COMMA_DELIMITER);
 			fileWriter.append(leistung.gast.getStrAusweisnummer());
 			fileWriter.append(COMMA_DELIMITER);
-			
 			fileWriter.append(leistung.getVon().toString());
 			fileWriter.append(COMMA_DELIMITER);
 			fileWriter.append(leistung.getBis().toString());
 			fileWriter.append(NEW_LINE_SEPARATOR);
-			fileWriter.close();
+			try {
+				fileWriter.flush();
+				fileWriter.close();
+			} catch (IOException e) {
+				System.out.println("Error while flushing/closing fileWriter !!!");
+                e.printStackTrace();
+			}
 			System.out.println("CSV file was created successfully !!!");
 
 		
