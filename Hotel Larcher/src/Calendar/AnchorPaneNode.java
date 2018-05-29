@@ -20,7 +20,7 @@ public class AnchorPaneNode extends AnchorPane {
     public AnchorPaneNode(Node... children) {
         super(children);
         // Add action handler for mouse clicked
-        this.setOnMouseClicked(e -> System.out.println("This pane's date is: " + date));
+        this.setOnMouseClicked(e -> System.out.println("Es sind noch " + /*irgendwia plätze auserfenden*/ 5+ " Plätze am " + date +" frei"));
     }
 
     public LocalDate getDate() {
