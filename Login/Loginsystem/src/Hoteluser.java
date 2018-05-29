@@ -138,6 +138,7 @@ public abstract class Hoteluser extends User{
 					break;
 				}
 			}
+			//10 Protzent abrechnen
 			try {
 				fileReader.close();
 			} catch (IOException e) {
