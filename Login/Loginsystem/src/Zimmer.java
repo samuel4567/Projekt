@@ -11,7 +11,7 @@ public class Zimmer extends Zusatzleistungen{
 		this.vollpension=vollpension;
 		this.zusatzbett=zusatzbett;
 	}
-	public boolean isZusatzbett() {
+	public Boolean isZusatzbett() {
 		return zusatzbett;
 	}
 	public void setZusatzbett(boolean zusatzbett) {
@@ -24,7 +24,7 @@ public class Zimmer extends Zusatzleistungen{
 	public void setZimmerart(int zimmerart) {
 		this.zimmerart = zimmerart;
 	}
-	public boolean isVollpension() {
+	public Boolean isVollpension() {
 		return vollpension;
 	}
 	public void setVollpension(boolean vollpension) {

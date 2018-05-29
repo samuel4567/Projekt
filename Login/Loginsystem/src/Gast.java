@@ -1,25 +1,55 @@
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Gast extends User {
 	private String strVorName;
 	private String strNachName;
 	private String strAdresse;
 	private String strAusweisnummer;
-	private static int gaste=1;
+	private static int gaste=0;
 	private int intGastnummer;
 	private String strSteuernummer;
 
-	public Gast(String strVorName, String strNachName, String strAdresse, String strAusweisnummer, int intGastnummer,
+	public Gast(String strVorName, String strNachName, String strAdresse, String strAusweisnummer, int gastnummer,
 			String strSteuernummer) {
+		this.intGastnummer=gastnummer;
+//		setGaste(getGaste() + 1);
+		this.strVorName=strVorName;
+		this.strNachName=strNachName;
+		this.strAdresse=strAdresse;
+		this.strAusweisnummer=strAusweisnummer;
+		
+		this.strSteuernummer=strSteuernummer;
+		
+	}
+	public Gast(String strVorName, String strNachName, String strAdresse, String strAusweisnummer,
+			String strSteuernummer) throws IOException {
+		this.intGastnummer=getGaste();
 		setGaste(getGaste() + 1);
 		this.strVorName=strVorName;
 		this.strNachName=strNachName;
 		this.strAdresse=strAdresse;
 		this.strAusweisnummer=strAusweisnummer;
-		this.intGastnummer=intGastnummer;
 		this.strSteuernummer=strSteuernummer;
-		
+		FileWriter fileWriter = new FileWriter("einstellungen.csv");
+		Integer gl=Gast.getGaste();
+		fileWriter.append(gl.toString());
+		fileWriter.append(",");//ID;Vorname;Nachname;Adresse;Steuernummer;Ausweis;Von;Bis
+		Integer rl=Rezeptionist.getAnzahlrez();
+		fileWriter.append(rl.toString());
+		fileWriter.append(",");
+		fileWriter.append(Zusatzleistungen.nummer.toString());
+		try {
+			fileWriter.flush();
+			fileWriter.close();
+		} catch (IOException e) {
+			System.out.println("Error while flushing/closing fileWriter !!!");
+            e.printStackTrace();
+		}
 	}
-
+	public void printinfo() {
+		System.out.println("Herr"+strNachName+" mit den Vorname "+strVorName+" steuer "+strSteuernummer+" Ausweis: "+strAusweisnummer+" wohnhaft in "+strAdresse);
+	}
 	public void buchung_abschlieﬂen() {
 	}
 
@@ -59,7 +89,7 @@ public class Gast extends User {
 		this.strAusweisnummer = strAusweisnummer;
 	}
 
-	public int getIntGastnummer() {
+	public Integer getIntGastnummer() {
 		return intGastnummer;
 	}
 
@@ -87,7 +117,7 @@ public class Gast extends User {
 		return gaste;
 	}
 
-	private static void setGaste(int gaste) {
+	public static void setGaste(int gaste) {
 		Gast.gaste = gaste;
 	}
 }
